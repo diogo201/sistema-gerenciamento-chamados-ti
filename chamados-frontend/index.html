@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sistema de Chamados de TI</title>
+
+    <!-- Arquivo de estilos -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="header-container">
+            <h1>Sistema de Chamados de TI</h1>
+            <p>Central de gerenciamento de chamados de suporte técnico</p>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- PAINEL DE INDICADORES -->
+        <section class="painel">
+
+            <h2>Painel de Chamados</h2>
+            <p>Gerencie e acompanhe os chamados de suporte técnico.</p>
+
+            <div class="cards">
+
+                <div class="card">
+                    <h3>Total de Chamados</h3>
+                    <span id="totalChamados">0</span>
+                </div>
+
+                <div class="card">
+                    <h3>Chamados Abertos</h3>
+                    <span id="totalAbertos">0</span>
+                </div>
+
+                <div class="card">
+                    <h3>Em Andamento</h3>
+                    <span id="totalAndamento">0</span>
+                </div>
+
+                <div class="card">
+                    <h3>Concluídos</h3>
+                    <span id="totalConcluidos">0</span>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- CADASTRO DE CHAMADOS -->
+        <section class="cadastro">
+
+            <h2>Cadastrar Novo Chamado</h2>
+            <p>Preencha as informações para registrar um novo chamado.</p>
+
+            <form id="formChamado">
+
+                <label for="titulo">Título do Chamado</label>
+
+                <input
+                    type="text"
+                    id="titulo"
+                    placeholder="Ex: Computador sem internet"
+                    required
+                >
+
+                <label for="descricao">Descrição do Problema</label>
+
+                <textarea
+                    id="descricao"
+                    placeholder="Descreva o problema encontrado..."
+                    required
+                ></textarea>
+
+                <label for="prioridade">Prioridade</label>
+
+                <select id="prioridade">
+                    <option value="Baixa">Baixa</option>
+                    <option value="Media">Média</option>
+                    <option value="Alta">Alta</option>
+                </select>
+
+                <button type="submit">
+                    Cadastrar Chamado
+                </button>
+
+            </form>
+
+        </section>
+
+        <!-- FORMULÁRIO DE EDIÇÃO -->
+        <section class="edicao" id="secaoEdicao" hidden>
+
+            <h2>Editar Chamado</h2>
+            <p>Atualize as informações do chamado selecionado.</p>
+
+            <form id="formEdicao">
+
+                <input type="hidden" id="editarId">
+
+                <label for="editarTitulo">Título do Chamado</label>
+
+                <input
+                    type="text"
+                    id="editarTitulo"
+                    required
+                >
+
+                <label for="editarDescricao">Descrição do Problema</label>
+
+                <textarea
+                    id="editarDescricao"
+                    required
+                ></textarea>
+
+                <label for="editarPrioridade">Prioridade</label>
+
+                <select id="editarPrioridade">
+                    <option value="Baixa">Baixa</option>
+                    <option value="Media">Média</option>
+                    <option value="Alta">Alta</option>
+                </select>
+
+                <label for="editarStatus">Status</label>
+
+                <select id="editarStatus">
+                    <option value="Aberto">Aberto</option>
+                    <option value="Em andamento">Em andamento</option>
+                    <option value="Concluído">Concluído</option>
+                </select>
+
+                <div class="acoes-edicao">
+
+                    <button type="submit" id="salvarEdicao">
+                        Salvar Alterações
+                    </button>
+
+                    <button
+                        type="button"
+                        id="cancelarEdicao"
+                        class="botao-cancelar"
+                    >
+                        Cancelar
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+        <!-- LISTAGEM DE CHAMADOS -->
+        <section class="listagem">
+
+            <h2>Chamados Cadastrados</h2>
+            <p>Visualize e pesquise os chamados registrados no sistema.</p>
+
+            <!-- FILTROS DE PESQUISA -->
+            <div class="filtros">
+
+                <div class="campo-filtro">
+
+                    <label for="filtroTitulo">
+                        Pesquisar por título
+                    </label>
+
+                    <input
+                        type="text"
+                        id="filtroTitulo"
+                        placeholder="Digite o título do chamado..."
+                    >
+
+                </div>
+
+                <div class="campo-filtro">
+
+                    <label for="filtroPrioridade">
+                        Prioridade
+                    </label>
+
+                    <select id="filtroPrioridade">
+                        <option value="">Todas</option>
+                        <option value="Baixa">Baixa</option>
+                        <option value="Media">Média</option>
+                        <option value="Alta">Alta</option>
+                    </select>
+
+                </div>
+
+                <div class="campo-filtro">
+
+                    <label for="filtroStatus">
+                        Status
+                    </label>
+
+                    <select id="filtroStatus">
+                        <option value="">Todos</option>
+                        <option value="Aberto">Aberto</option>
+                        <option value="Em andamento">Em andamento</option>
+                        <option value="Concluído">Concluído</option>
+                    </select>
+
+                </div>
+
+                <button type="button" id="limparFiltros">
+                    Limpar Filtros
+                </button>
+
+            </div>
+
+            <!-- RESULTADOS -->
+            <div id="listaChamados" aria-live="polite">
+                <p>Carregando chamados...</p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p>Sistema de Chamados de TI - Projeto Acadêmico</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,4 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+chamados-service,com.chamadosti.chamados_service,Chamado,9,25,0,0,3,12,3,7,3,7
+chamados-service,com.chamadosti.chamados_service,ChamadosServiceApplication,5,3,0,0,2,1,1,1,1,1
+chamados-service,com.chamadosti.chamados_service,ChamadoController,72,10,2,0,15,4,8,2,7,2
